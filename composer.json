@@ -35,5 +35,10 @@
             "docker exec -t tests_runner_1 sh -c \"TARGET=php71 vendor/bin/phpunit --testdox\"",
             "docker exec -t tests_runner_1 sh -c \"TARGET=php72 vendor/bin/phpunit --testdox\""
         ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     }
 }
