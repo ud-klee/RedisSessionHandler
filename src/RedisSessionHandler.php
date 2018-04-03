@@ -103,7 +103,7 @@ class RedisSessionHandler extends \SessionHandler
 
         list(
             $host, $port, $timeout, $prefix, $auth, $database
-        ) = SavePathParser::parse($save_path);
+        ) = $this->parse_save_path($save_path);
 
         if (false === $this->redis->connect($host, $port, $timeout)) {
             return false;
@@ -120,6 +120,15 @@ class RedisSessionHandler extends \SessionHandler
         $this->redis->setOption(\Redis::OPT_PREFIX, $prefix);
 
         return true;
+    }
+
+    /**
+     * @param string $save_path
+     *
+     * @return array
+     */
+    protected function parse_save_path($save_path) {
+        return SavePathParser::parse($save_path);
     }
 
     /**
